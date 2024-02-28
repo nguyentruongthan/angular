@@ -1,0 +1,31 @@
+<h2>Hello there!</h2>
+<h3>Your name: {{ user.name }}</h3>
+<p>Your age: {{ user.age }}</p>
+
+<h1>Simple form with shorthand syntax:</h1>
+<div *ngIf = "user.age >= 13">You can watch content of PG-13</div>
+<div *ngIf = "user.age < 13">You cannot watch content of PG-13</div>
+
+<h1>Simple form with expanded syntax:</h1>
+<ng-template [ngIf]="user.age >= 13">
+  <div>Bạn có thể xem nội dung PG-13</div>
+</ng-template>
+<ng-template [ngIf]="user.age < 13">
+  <div>Bạn không thể xem nội dung PG-13</div>
+</ng-template>
+
+<h1>Form with an "else" block:</h1>
+<div *ngIf="user.age >= 13; else elseBlock">You can watch content of PG-13</div>
+<ng-template #elseBlock>You cannot watch content of PG-13</ng-template>
+
+<h1>Shorthand form with "then" and "else" blocks:</h1>
+<div *ngIf="user.age >= 13; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>{{user.age}}</ng-template>
+
+<div>
+  <h1>Showing an alternative template using else</h1>
+  <button (click)="show = !show">{{ show ? 'hide' : 'show' }}</button>
+  show = {{ show }}
+  <br />
+  <div *ngIf="show">Text to show</div>
+</div>
