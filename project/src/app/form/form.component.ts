@@ -9,18 +9,19 @@ export class FormComponent {
   constructor() { }
   ngOnInit(): void {
   }
+  iconClass = "bi bi-arrow-down rotate";
   InputLoaiVanBan: string = "";
   isDisableClick: boolean = false;
   isViewOptionLoaiVanBan: boolean = false;
   LoaiVanBanSuggests: string[] = ["Vo Hoang", "Nguyen Truong Than", "Nguyen Tran Quan Vu",
-    "Le Phan Quoc Vu", "Cao Duc Vinh"];
+    "Le Phan Quoc Vu", "Cao Duc Vinh", "Tran Thi Kim Kieu", "Bui Le Van", "Le Ngoc Thao"];
   LoaiVanBanSuggestsAfter: string[] = this.LoaiVanBanSuggests
 
-  updateSuggestName(): void {
+  updateSuggest(): void {
     if (this.InputLoaiVanBan == "") {
-      this.unviewSuggestName();
+      this.unviewSuggest();
     } else {
-      this.viewSuggestName();
+      this.viewSuggest();
     }
     this.LoaiVanBanSuggestsAfter = this.LoaiVanBanSuggests.filter(LoaiVanBan => LoaiVanBan.toLowerCase().includes(this.InputLoaiVanBan.toLowerCase()));
     if (this.LoaiVanBanSuggestsAfter.length == 0) {
@@ -31,14 +32,24 @@ export class FormComponent {
     }
     
   }
-  viewSuggestName(): void {
+  viewSuggest(): void {
     this.isViewOptionLoaiVanBan = true;
+    this.iconClass = "bi bi-arrow-down";
   }
-  unviewSuggestName(): void {
+  unviewSuggest(): void {
     this.isViewOptionLoaiVanBan = false;
+    this.iconClass = "bi bi-arrow-down rotate";
   }
   clickToOption(LoaiVanBanSuggest: string): void {
     this.InputLoaiVanBan = LoaiVanBanSuggest;
-    this.unviewSuggestName();
+    this.unviewSuggest();
+  }
+  switchViewSuggest(): void {
+    this.isViewOptionLoaiVanBan = !this.isViewOptionLoaiVanBan;
+    if (this.isViewOptionLoaiVanBan) {
+      this.viewSuggest()
+    }else{
+      this.unviewSuggest()
+    }
   }
 }

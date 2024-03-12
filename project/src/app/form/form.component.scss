@@ -1,7 +1,11 @@
 .SearchLoaiVanBan{
   width: 250px;
   margin: 20px;
+  margin-top: 300px;
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
   .input{
     height: 30px;
     width: 100%;
@@ -25,17 +29,25 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+  }
+  .rotate{
+    transform: rotate(180deg);
+    
   }
   .select{
-    
+    overflow-y: scroll;
     position: absolute;
-    top: 40px;
+    max-height: 150px;
+    bottom: 40px;
     left: 0px;
     border-radius: 5px;
-    width: 100%;
+    width: 100%;;
+    border: 1px solid black;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    border: 1px solid black;
+    animation-name: changeHeight;
+    animation-duration: 0.5s;
   }
   .select option{
     padding-left: 10px;
@@ -44,6 +56,13 @@
   .select option:hover{
     background-color: gray;
   }
+}
 
-
+@keyframes changeHeight {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 150px;
+  }
 }

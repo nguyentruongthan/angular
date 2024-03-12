@@ -1,10 +1,8 @@
 <div class="SearchLoaiVanBan">
   <div class="LoaiVanBan">
     <div class="input">
-      <input type="text" [(ngModel)]="InputLoaiVanBan" (click)="viewSuggestName()" (input)="updateSuggestName()" #min="ngModel" placeholder="Enter Name" required>
-      <div *ngIf="isViewOptionLoaiVanBan; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock><i class="bi bi-arrow-up" (click)="unviewSuggestName()"></i></ng-template>
-      <ng-template #elseBlock><i class="bi bi-arrow-down" (click)="viewSuggestName()"></i></ng-template>
+      <input type="text" [(ngModel)]="InputLoaiVanBan" (click)="viewSuggest()" (input)="updateSuggest()" #min="ngModel" placeholder="Loại văn bản" required>
+      <i [class]="iconClass" (click)="switchViewSuggest()"></i>
     </div>
     <div class="select" *ngIf="isViewOptionLoaiVanBan">
       <option *ngFor="let LoaiVanBanSuggest of LoaiVanBanSuggestsAfter;" (click)="clickToOption(LoaiVanBanSuggest)" [disabled]="isDisableClick">
@@ -12,6 +10,4 @@
       </option>
     </div>
   </div>
-
-  
 </div>
